@@ -149,9 +149,11 @@
               
                         // Redirect to the dashboard
                         if (res.data.role === "job_seeker") {
-                            window.location.href = "/dashboard";
+                            window.location.href = "/dashboard/seeker";
                         } else if (res.data.role === "employer") {
-                            window.location.href = "/dashboard"
+                            window.location.href = "/dashboard/employee"
+                        }else{
+                            window.location.href = "/dashboard/admin"
                         }
 
                 } else {

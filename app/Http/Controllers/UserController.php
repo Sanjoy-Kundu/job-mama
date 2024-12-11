@@ -65,7 +65,7 @@ class UserController extends Controller
 
     public function seekerDashboard(){
         try{
-            return view('pages.auth.dashboard.dashboard');
+            return view('pages.auth.dashboard.dashboardPage');
         }catch(Exception $ex){
             return response()->json(["status" => "fail", "message" => $ex->getMessage()]);
         }
@@ -73,7 +73,7 @@ class UserController extends Controller
 
     public function employeeDashboard(){
         try{
-            return view('pages.auth.dashboard.dashboard');
+            return view('pages.auth.dashboard.dashboardPage');
 
         }catch(Exception $ex){
             return response()->json(["status" => "fail", "message" => $ex->getMessage()]);

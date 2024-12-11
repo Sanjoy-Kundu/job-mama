@@ -11,6 +11,18 @@ Route::post("/registration-post", [UserController::class, "registrationUser"]);
 Route::post("/login-post", [UserController::class, "loginUser"]);
 
 
-Route::get("/dashboard", [UserController::class, "seekerDashboard"])->middleware(['auth']);
-Route::get("/dashboard", [UserController::class, "employeeDashboard"])->middleware(['auth']);
+
+//Route::get("/dashboard", [UserController::class, "employeeDashboard"])->middleware(['auth']);
+
+Route::middleware(['auth', 'role:job_seeker'])->group(function () {
+    Route::get("/dashboard/seeker", [UserController::class, "seekerDashboard"]);
+});
+
+Route::middleware(['auth', 'role:employer'])->group(function () {
+    Route::get("/dashboard/employee", [UserController::class, "employeeDashboard"]);
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get("/dashboard/admin", [UserController::class, "adminDashboard"]);
+});
 

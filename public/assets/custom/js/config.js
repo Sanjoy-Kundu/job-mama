@@ -6,7 +6,19 @@ function setToken(token){
 
 
 
+function getToken(){
+    return localStorage.getItem("token")
+}
 
+
+function headerToken(){
+    let token = getToken();
+    return{
+        headers:{
+            Authorization:token
+        }
+    }
+}
 
 
 

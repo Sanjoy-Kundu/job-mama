@@ -38,6 +38,11 @@ class UserController extends Controller
     public function loginUser(Request $request)
     {
         try {
+            $email = User::where("email", Str::lower($request->input("email")))->first();
+            if(!$email){
+                return response()->json(['status' => 'fail', 'message' => 'Invlaid Email']);
+            }
+
             if (Auth::attempt(['email' => Str::lower($request->input('email')), 'password' => $request->input('password')])) {
                 $user = Auth::user();
 

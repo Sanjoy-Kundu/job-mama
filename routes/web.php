@@ -30,6 +30,7 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::get("/dashboard/admin", [DashboardController::class, "adminDashboard"]);
     Route::get('/logout', [DashboardController::class, "logout"]);
 
+    Route::get("/dashboard/job/category", [JobCategoryController::class, "categoryPage"]);
     Route::get("/dashboard/job/category/lists", [JobCategoryController::class, "index"]);
     Route::post("/dashboard/job/category", [JobCategoryController::class, "create"]);
 

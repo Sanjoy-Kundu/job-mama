@@ -21,7 +21,7 @@
                  </a>
                  <div id="job_management" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                      <div class="bg-white py-2 collapse-inner rounded">
-                         <a class="collapse-item" href="">Categories</a>
+                         <a class="collapse-item" href="{{url('/dashboard/job/category')}}" target="_blank">Categories</a>
                          <a class="collapse-item" href="">Post a New Job</a>
                          <a class="collapse-item" href="">Manage Jobs</a>
                      </div>

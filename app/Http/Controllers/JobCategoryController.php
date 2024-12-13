@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class JobCategoryController extends Controller
 {
+
+
+    public function categoryPage(){
+        try{
+            return view("pages.auth.dashboard.category.categoryPage");
+        }catch(Exception $ex){
+            return response()->json(["status" => "fail", "message" => $ex->getMessage()]);
+        }
+    }
     /**
      * Display a listing of the resource.
      */

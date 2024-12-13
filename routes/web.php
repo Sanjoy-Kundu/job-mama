@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\JobCategoryController;
+use App\Http\Controllers\JobSubcategoryController;
 
 Route::get("/login", [UserController::class, "loginPage"])->name('login');
 Route::post("/login-post", [UserController::class, "loginUser"]);
@@ -24,8 +26,15 @@ Route::middleware(['role:employer'])->group(function () {
     Route::get('/logout', [DashboardController::class, "logout"]);
 });
 
-Route::middleware(['role:admin'])->group(function () {
+Route::middleware(['auth','role:admin'])->group(function () {
     Route::get("/dashboard/admin", [DashboardController::class, "adminDashboard"]);
     Route::get('/logout', [DashboardController::class, "logout"]);
+
+    Route::get("/dashboard/job/category/lists", [JobCategoryController::class, "index"]);
+    Route::post("/dashboard/job/category", [JobCategoryController::class, "create"]);
+
+    Route::get("/dashboard/job/sub/category/lists", [JobSubcategoryController::class, "index"]);
+    Route::post("/dashboard/job/sub/category", [JobSubcategoryController::class, "create"]);
+    
 });
 

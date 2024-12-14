@@ -15,7 +15,9 @@ function headerToken(){
     let token = getToken();
     return{
         headers:{
-            Authorization:token
+            Authorization:token,
+            "Content-Type": "application/json",
+            "Accept": "application/json"
         }
     }
 }

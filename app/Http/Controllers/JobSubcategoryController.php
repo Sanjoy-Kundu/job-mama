@@ -39,6 +39,15 @@ class JobSubCategoryController extends Controller
                 ],   
             );
 
+            $name = trim(Str::upper($request->input("name")));
+            $job_categories_id = trim($request->input("job_categories_id"));
+            $chaekJobSubCategory = JobSubcategory::where("name",$name)->where("job_categories_id")->exists();
+            if($chaekJobSubCategory){
+                return response()->json(["status" => "error", "message" => "Name and Category Already taken"]);
+            }
+
+
+
             JobSubcategory::create([
                 'name' => Str::upper(trim($request->input('name'))),
                 'job_categories_id' => $request->input('job_categories_id')
